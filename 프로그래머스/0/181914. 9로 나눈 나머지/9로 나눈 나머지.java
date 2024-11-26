@@ -5,7 +5,7 @@ class Solution {
         String[] stringArray = number.split("");
         int sum = 0;
         for (String idx : stringArray) {
-            sum += Integer.parseInt(idx) % 9;
+            sum += Integer.parseInt(idx);
         }
         answer = sum % 9;
         
