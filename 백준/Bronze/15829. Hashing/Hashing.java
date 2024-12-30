@@ -1,5 +1,4 @@
 import java.io.*;
-import java.math.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -9,16 +8,17 @@ public class Main {
         int L = Integer.parseInt(br.readLine());
         String s = br.readLine();
 
-        BigInteger hash = BigInteger.ZERO;
-        BigInteger base = BigInteger.valueOf(31);
+        long hash = 0;
+        long power = 1;
+        int MOD = 1234567891;
 
         for (int i = 0; i < L; i++) {
             int charValue = s.charAt(i) - 'a' + 1;
-            BigInteger power = base.pow(i);
-            hash = hash.add(power.multiply(BigInteger.valueOf(charValue)));
+            hash = (hash + charValue * power) % MOD;
+            power = (power * 31) % MOD;
         }
 
-        bw.write(hash.toString());
+        bw.write(String.valueOf(hash));
         bw.flush();
         bw.close();
         br.close();
